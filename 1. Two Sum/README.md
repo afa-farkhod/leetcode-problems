@@ -21,10 +21,30 @@ Input: nums = [3,3], target = 6
 Output: [0,1]
  
 Constraints:
-2 <= nums.length <= 104
--109 <= nums[i] <= 109
--109 <= target <= 109
+2 <= nums.length <= 10^4
+-10^9 <= nums[i] <= 10^9
+-10^9 <= target <= 10^9
 Only one valid answer exists.
  
 Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
+```
+
+## Solution
+
+```
+import "fmt"
+
+func twoSum(nums []int, target int) []int {
+    // map to store number => index
+    numMap := make(map[int]int)
+
+    for i, num := range nums{
+        complement := target - num
+        if idx, found := numMap[complement]; found{
+            return []int{idx, i}
+        }
+        numMap[num] = i
+    }
+    return nil
+}
 ```
